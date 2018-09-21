@@ -1,8 +1,11 @@
 const express = require('express');
+const exphbs = require('express-handlebars');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const passport = require('passport');
 const keys = require('./config/keys');
+
+const app = express();
 
 // Load User Model
 require('./models/users');
@@ -12,19 +15,16 @@ require('./config/passport')(passport);
 
 // Load Routes
 const auth = require('./routes/auth');
+const index = require('./routes/index');
 
 // Mongoose Connect
 mongoose.connect(keys.mongoURI, {
         useNewUrlParser: true
     })
-    .then(() => {console.log('MongoDB Connected')})
+    .then(() => {
+        console.log('MongoDB Connected')
+    })
     .catch((err) => console.log(err));
-
-const app = express();
-
-app.get('/', (req, res) => {
-    res.send('index');
-});
 
 app.use(session({
     secret: 'secret',
@@ -42,8 +42,15 @@ app.use((req, res, next) => {
     next();
 });
 
+// Handlebars Middleware
+app.engine('handlebars', exphbs({
+    defaultLayout: 'main'
+}));
+app.set('view engine', 'handlebars');
+
 // Use Routes
 app.use('/auth', auth);
+app.use('/', index);
 
 const port = process.env.PORT || 5000;
 

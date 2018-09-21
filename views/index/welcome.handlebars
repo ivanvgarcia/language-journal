@@ -1,0 +1,18 @@
+<h1>
+  Welcome
+</h1>
+<p>
+  Welcome to Language Journal 1.0.0
+</p>
+<p>
+  Practice a target language by writing public journal entries to share with the world or private journal entries for your own self-improvement.
+</p>
+{{#if user}}
+
+{{else}}
+  <a href="/auth/google" class="red accent-3 btn">
+    <i class="fa fa-google left">
+      Login With Google
+    </i>
+  </a>
+{{/if}}

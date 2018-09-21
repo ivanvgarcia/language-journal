@@ -1,0 +1,15 @@
+{
+  "name": "language-journal",
+  "version": "1.0.0",
+  "description": "An app for language students to write journals using their target language",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "Ivan Garcia",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "mongoose": "^5.2.16"
+  }
+}

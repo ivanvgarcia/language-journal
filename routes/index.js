@@ -6,7 +6,11 @@ router.get('/', (req, res) => {
 });
 
 router.get('/dashboard', (req, res) => {
-    res.render('dashboard');
+    res.render('index/dashboard');
+});
+
+router.get('/about', (req, res) => {
+    res.render('index/about');
 });
 
 

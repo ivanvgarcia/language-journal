@@ -31,10 +31,25 @@
           </a>
         {{/if}}
       </ul>
+    </nav>
       <!-- SIDE MENU -->
       <ul id="main-menu" class="sidenav">
         {{#if user}}
-
+          <li>
+            <div class="user-view">
+              <div class="overlay"></div>
+              <div class="background">
+                <img src="/img/header-image.jpg" />
+              </div>
+                <img class="circle" src={{user.image}} />
+                <span class="white-text name">
+                  {{user.firstName}} {{user.lastName}}
+                </span>
+                <span class="white-text email">
+                  {{user.email}}
+                </span>
+            </div>
+          </li>
         {{else}}
           <li>
             <a href="/auth/google" class="red accent-3 btn">
@@ -51,26 +66,25 @@
         </li>
         <li class="divider"></li>
         {{#if user}}
-        <li>
-          <a href="/dashboard">
-            <i class="fa fa-cog"></i>
-            Dashboard
-          </a>
-        </li>
-        <li>
-          <a href="/journals/my">
-            <i class="fa fa-user"></i>
-            My Journals
-          </a>
-        </li>
-        <li>
-          <a href="/auth/logout">
-            <i class="fa fa-sign-out"></i>
-            Logout
-          </a>
-        </li>
+          <li>
+            <a href="/dashboard">
+              <i class="fa fa-cog"></i>
+              Dashboard
+            </a>
+          </li>
+          <li>
+            <a href="/journals/my">
+              <i class="fa fa-user"></i>
+              My Journals
+            </a>
+          </li>
+          <li>
+            <a href="/auth/logout">
+              <i class="fa fa-sign-out"></i>
+              Logout
+            </a>
+          </li>
         {{/if}}
       </ul>
     </div>
   </div>
-</nav>

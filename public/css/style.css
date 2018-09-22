@@ -7,3 +7,38 @@ body {
 main {
     flex: 1 0 auto;
 }
+
+.nav-wrapper .fa-bars {
+    font-size: 25px;
+}
+
+footer {
+    margin-top: 20px;
+}
+
+.user-view {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.user-view img,
+.user-view span {
+    z-index: 10;
+}
+
+.overlay {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(96, 125, 139, 0.466);
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+[type="checkbox"].filled-in:checked+span:not(.lever):after {
+    border: 2px solid #d50000;
+    background-color: #ff1744;
+}

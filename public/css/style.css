@@ -16,6 +16,12 @@ footer {
     margin-top: 20px;
 }
 
+.main-headings {
+    text-align: center;
+    margin: 60px 0;
+    font-weight: 100;
+}
+
 .user-view {
     display: flex;
     align-items: center;
@@ -41,4 +47,38 @@ footer {
 [type="checkbox"].filled-in:checked+span:not(.lever):after {
     border: 2px solid #d50000;
     background-color: #ff1744;
+}
+
+.card {
+    cursor: pointer;
+}
+
+.card-image {
+    min-height: 50px;
+    padding: 5px 0;
+    background: #0882B2;
+}
+
+.user-card {
+    margin-top: 85px;
+}
+
+.chip {
+    background: #ff5252;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 100;
+    cursor: pointer;
+}
+
+.journal-text {
+    height: 100px;
+}
+
+.dash-status {
+    text-transform: capitalize;
+}
+
+#delete-form {
+    display: inline;
 }

@@ -1,1 +1,42 @@
-<h1>Journal</h1>
+<h1 class="main-headings">
+  Public Journal
+</h1>
+<div class="row">
+  {{#each journals}}
+    <div class="col s12 m4">
+      <div class="card hoverable">
+        <div class="card-image center-align white-text">
+          <h5>
+            {{title}}
+          </h5>
+          <a
+            href="/journal/edit/{{id}}"
+            class="btn-floating halfway-fab red accent-2"
+          >
+            <i class="fa fa-pencil"></i>
+          </a>
+        </div>
+        <div class="card-content center-align">
+          <p class="journal-text">
+            {{stripTags (truncate body 150)}}
+          </p>
+          <br />
+          <div class="chip">
+            <img src={{user.image}} alt="user image" />
+            {{user.firstName}}
+            {{user.lastName}}
+          </div>
+        </div>
+        <div class="card-action center-align">
+          <a class="btn blue-grey" href="/journals/show/{{id}}">
+            Read More
+          </a>
+        </div>
+      </div>
+    </div>
+  {{else}}
+    <p>
+      No Journals Found
+    </p>
+  {{/each}}
+</div>

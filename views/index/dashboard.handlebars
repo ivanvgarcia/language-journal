@@ -1,2 +1,53 @@
-<h1>Welcome {{user.firstName}}</h1>
-<h4>Your Stories</h4>
+{{#if journals}}
+  <table class="striped">
+    <thead>
+      <tr>
+        <th>
+          Title
+        </th>
+        <th>
+          Date
+        </th>
+        <th>
+          Status
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each journals}}
+        <tr>
+          <td>
+            <a href="/journals/show/{{id}}">
+              {{title}}
+            </a>
+          </td>
+          <td>
+            {{formatDate date "MMMM do YYYY"}}
+          </td>
+          <td>
+            <span class="dash-status">
+              {{status}}
+            </span>
+          </td>
+          <td>
+            <a class="btn left-align" href="/stores/edit/{{id}}">
+              <i class="fa fa-pencil"></i>
+              Edit
+            </a>
+            <form
+              action="/journals/{{id}}"
+              method="POST"
+              id="delete-form"
+            >
+                <button type="submit" class="btn red accent-3"><i class="fa fa-remove"></i> Delete</button>
+            </form>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+{{else}}
+  <p>
+    You have not written any journals yet.
+  </p>
+{{/if}}

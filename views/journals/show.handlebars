@@ -1,1 +1,34 @@
-<h1>Show Journal</h1>
+<div class="row">
+  <div class="col s12 m8">
+    <h3 class="center-align">
+      {{journal.title}}
+    </h3>
+    <div class="card story">
+      <div class="card-content">
+        <span class="card-title">
+          {{formatDate journal.date 'MMMM Do YYYY'}}
+        </span>
+        {{{journal.body}}}
+      </div>
+    </div>
+  </div>
+  <div class="col s12 m4 user-card">
+    <div class="card center-align">
+      <div class="card-content">
+        <span class="card-title">
+          {{journal.user.firstName}}
+          {{journal.user.lastName}}
+        </span>
+        <img
+          src={{journal.user.image}}
+          alt="user image"
+          class="circle responsive-img"
+         />
+
+      </div>
+      <div class="card-action">
+        <a href="/journals/user/{{journal.user.id}}">More From {{journal.user.firstName}}</a>
+      </div>
+    </div>
+  </div>
+</div>

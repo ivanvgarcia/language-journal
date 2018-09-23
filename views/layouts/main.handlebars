@@ -32,6 +32,26 @@
         $(document).ready(() => {
             $('.sidenav').sidenav();
             $('select').formSelect();
+            $('input.autocomplete').autocomplete({
+                data: {
+                    "Albanian": null,
+                    "Arabic": null,
+                    "Bengali": null,
+                    "Chinese": null,
+                    "English": null,
+                    "French": null,
+                    "German": null,
+                    "Hindi": null,
+                    "Italian": null,
+                    "Japanese": null,
+                    "Korean": null,
+                    "Portuguese": null,
+                    "Punjabi": null,
+                    "Russian": null,
+                    "Spanish": null,
+                    "Urdu": null
+                },
+            });
         });
 
         CKEDITOR.replace('body', {

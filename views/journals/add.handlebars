@@ -1,14 +1,34 @@
 <h1>
-  Add Journal
+  Add Journal Entry
 </h1>
+<div class="divider red accent-3"></div>
 <div class="row">
   <form action="/journals" method="POST" class="col s12">
     <div class="row">
       <div class="input-field">
-        <input type="text" name="title" />
+        <input type="text" name="title" required="" />
         <label for="title">
           Title
         </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <div class="row">
+          <div class="input-field">
+            <input
+              type="text"
+              id="autocomplete-input"
+              class="autocomplete"
+              name="language"
+              required=""
+             />
+
+            <label for="autocomplete-input">
+              Language
+            </label>
+          </div>
+        </div>
       </div>
     </div>
     <div class="row">
@@ -32,7 +52,14 @@
     <div class="row">
       <p>
         <label for="allowComments">
-          <input type="checkbox" id="allowComments" name="allowComments" class="filled-in" />
+          <input
+            type="checkbox"
+            id="allowComments"
+            name="allowComments"
+            class="filled-in"
+            checked="checked"
+           />
+
           <span>
             Allow Comments
           </span>
@@ -44,7 +71,7 @@
         <h5>
           Write your Journal
         </h5>
-        <textarea name="body"></textarea>
+        <textarea name="body" required></textarea>
       </div>
     </div>
     <input type="submit" value="save" class="btn red accent-3" />

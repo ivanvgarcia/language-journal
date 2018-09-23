@@ -1,5 +1,6 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
+const bodyParser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
 const session = require('express-session');
@@ -8,8 +9,16 @@ const keys = require('./config/keys');
 
 const app = express();
 
-// Load User Model
-require('./models/users');
+// Load Models
+require('./models/user');
+require('./models/journal');
+
+// Handlebars Helpers
+const {
+    truncate,
+    stripTags,
+    formatDate
+} = require('./helpers/hbs');
 
 // Passport Configuration
 require('./config/passport')(passport);
@@ -50,10 +59,20 @@ app.use((req, res, next) => {
     next();
 });
 
+// Path Join Middleware
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Body Parser Middleware 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 // Handlebars Middleware
 app.engine('handlebars', exphbs({
+    helpers: {
+        truncate,
+        stripTags,
+        formatDate
+    },
     defaultLayout: 'main'
 }));
 app.set('view engine', 'handlebars');

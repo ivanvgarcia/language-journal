@@ -1,6 +1,7 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
 const path = require('path');
 const mongoose = require('mongoose');
 const session = require('express-session');
@@ -17,7 +18,8 @@ require('./models/journal');
 const {
     truncate,
     stripTags,
-    formatDate
+    formatDate,
+    select
 } = require('./helpers/hbs');
 
 // Passport Configuration
@@ -66,12 +68,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+// Method Override Middleware
+app.use(methodOverride('_method'));
+
 // Handlebars Middleware
 app.engine('handlebars', exphbs({
     helpers: {
         truncate,
         stripTags,
-        formatDate
+        formatDate,
+        select
     },
     defaultLayout: 'main'
 }));

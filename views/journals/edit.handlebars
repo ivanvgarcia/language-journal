@@ -1,1 +1,85 @@
-<h1>Edit Journal</h1>
+<h1>
+  Edit Journal Entry
+</h1>
+<div class="divider red accent-3"></div>
+<div class="row">
+  <form action="/journals/{{journal.id}}?_method=PUT" method="POST" class="col s12">
+    <input type="hidden" name="_method" value="PUT">
+    <div class="row">
+      <div class="input-field">
+        <input type="text" name="title" value="{{journal.title}}" required />
+        <label for="title">
+          Title
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <div class="row">
+          <div class="input-field">
+            <input
+              type="text"
+              id="autocomplete-input"
+              class="autocomplete"
+              name="language"
+              value={{journal.language}}
+              required
+             />
+
+            <label for="autocomplete-input">
+              Language
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field">
+        <select name="status">
+          {{#select journal.status}}
+            <option value="public">
+              Public
+            </option>
+            <option value="private">
+              Private
+            </option>
+            <option value="unpublished">
+              Unpublished
+            </option>
+          {{/select}}
+        </select>
+        <label for="status">
+          Status
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <p>
+        <label for="allowComments">
+          <input
+            type="checkbox"
+            id="allowComments"
+            name="allowComments"
+            class="filled-in"
+            {{#if journal.allowComments}}
+                checked="checked"
+            {{/if}}
+           />
+
+          <span>
+            Allow Comments
+          </span>
+        </label>
+      </p>
+    </div>
+    <div class="row">
+      <div class="input-field">
+        <h5>
+          Write your Journal
+        </h5>
+        <textarea name="body" required>{{journal.body}}</textarea>
+      </div>
+    </div>
+    <input type="submit" value="save" class="btn red accent-3" />
+  </form>
+</div>

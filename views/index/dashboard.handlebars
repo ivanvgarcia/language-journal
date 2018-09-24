@@ -30,15 +30,16 @@
             </span>
           </td>
           <td>
-            <a class="btn left-align" href="/stores/edit/{{id}}">
+            <a class="btn left-align" href="/journals/edit/{{id}}">
               <i class="fa fa-pencil"></i>
               Edit
             </a>
             <form
-              action="/journals/{{id}}"
+              action="/journals/{{id}}?_method=DELETE"
               method="POST"
               id="delete-form"
             >
+                <input type="hidden" name="_method" value="delete">
                 <button type="submit" class="btn red accent-3"><i class="fa fa-remove"></i> Delete</button>
             </form>
           </td>

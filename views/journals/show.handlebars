@@ -2,6 +2,7 @@
   <div class="col s12 m8">
     <h3 class="center-align">
       {{journal.title}}
+      <small class="edit-journal">{{{editIcon journal.user.id user.id journal.id false}}}</small>
     </h3>
     <div class="card story">
       <div class="card-content">
@@ -11,6 +12,34 @@
         {{{journal.body}}}
       </div>
     </div>
+
+    {{#if journal.allowComments}}
+      <div class="card">
+        <div class="card-content">
+          {{#if user}}
+            <form action="/journals/comment/{{journal.id}}" method="POST">
+              <div class="input-field">
+                <textarea name="commentBody" class="materialize-textarea"></textarea>
+                <label>Add Comment</label>
+              </div>
+              <input type="submit" value="Submit" class="btn red accent-3">
+            </form>
+          {{else}}
+            <p>Please <a href="/auth/google">login</a> to leave a comment</p>
+          {{/if}}
+        </div>
+      </div>
+      <ul class="collection">
+      {{#each journal.comments}}
+          <li class="collection-item avatar">
+              <img src={{commentUser.image}} alt="user image" class="circle"/>
+              <a href="/journals/user/{{commentUser.id}}" class="title">{{commentUser.firstName}} {{commentUser.lastName}}</a>
+            <p>{{commentBody}}</p>
+            <small class="secondary-content">Posted on {{formatDateRelative commentDate 'YYYYMMDD'}}</small>
+          </li>
+      {{/each}}
+      </ul>
+    {{/if}}
   </div>
   <div class="col s12 m4 user-card">
     <div class="card center-align">
@@ -27,7 +56,7 @@
 
       </div>
       <div class="card-action">
-        <a href="/journals/user/{{journal.user.id}}">More From {{journal.user.firstName}}</a>
+        <a class="red-text" href="/journals/user/{{journal.user.id}}">More From {{journal.user.firstName}}</a>
       </div>
     </div>
   </div>

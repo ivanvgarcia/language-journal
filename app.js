@@ -2,6 +2,7 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
+const flash = require('connect-flash');
 const path = require('path');
 const mongoose = require('mongoose');
 const session = require('express-session');
@@ -19,7 +20,9 @@ const {
     truncate,
     stripTags,
     formatDate,
-    select
+    formatDateRelative,
+    select,
+    editIcon
 } = require('./helpers/hbs');
 
 // Passport Configuration
@@ -55,9 +58,14 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Connect Flash
+app.use(flash());
+
 // Set Global Variables
 app.use((req, res, next) => {
     res.locals.user = req.user || null;
+    res.locals.success = req.flash('success');
+    res.locals.error = req.flash('error');
     next();
 });
 
@@ -71,13 +79,17 @@ app.use(bodyParser.json());
 // Method Override Middleware
 app.use(methodOverride('_method'));
 
+
+
 // Handlebars Middleware
 app.engine('handlebars', exphbs({
     helpers: {
         truncate,
         stripTags,
         formatDate,
-        select
+        formatDateRelative,
+        select,
+        editIcon
     },
     defaultLayout: 'main'
 }));

@@ -11,6 +11,7 @@ router.get('/google/callback',
         failureRedirect: '/'
     }),
     (req, res) => {
+        req.flash('success', 'Successfully Logged in.')
         res.redirect('/dashboard');
     });
 
@@ -24,6 +25,7 @@ router.get('/verify', (req, res) => {
 
 router.get('/logout', (req, res) => {
     req.logout();
+    req.flash('success', 'Successfully logged out.')
     res.redirect('/');
 });
 

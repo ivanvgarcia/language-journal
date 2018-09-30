@@ -71,9 +71,7 @@ footer {
     cursor: pointer;
 }
 
-.journal-text {
-  
-}
+.journal-text {}
 
 .dash-status {
     text-transform: capitalize;
@@ -114,4 +112,34 @@ footer {
         opacity: 1;
         transform: translateX(0);
     }
+}
+
+.collection .title {
+    color: #607D8B;
+    font-weight: 600;
+}
+
+.collection .title:hover {
+    text-decoration: underline;
+}
+
+.collection form {
+    display: inline;
+}
+
+.comment-btn {
+    display: inline-block;
+    font-size: .8rem;
+    min-height: 20px;
+    color: #d50000;
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 4px 8px 0 0;
+    cursor: pointer;
+}
+
+.comment-btn:hover {
+    text-decoration: underline;
+    color: #ff1744;
 }

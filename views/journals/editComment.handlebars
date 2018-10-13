@@ -1,0 +1,28 @@
+<h1>
+  Edit Comment
+</h1>
+<div class="divider red accent-3"></div>
+<div class="row">
+  <form
+    action="/journals/{{journal.id}}/comment/{{comment.id}}?_method=PUT"
+    method="POST"
+    class="col s12"
+  >
+    <input type="hidden" name="_method" value="PUT" />
+    <div class="row">
+      <div class="input-field">
+        <input
+          type="text"
+          name="commentBody"
+          value="{{comment.commentBody}}"
+          required
+         />
+
+        <label for="title">
+          Edit Comment
+        </label>
+      </div>
+      <input type="submit" value="Submit" class="btn red accent-3" />
+    </div>
+  </form>
+</div>
